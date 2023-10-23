@@ -1,0 +1,178 @@
+New<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:wicket="http://wicket.sourceforge.net/"
+  xml:lang="en"
+  lang="en">
+
+  <body>
+
+    <wicket:extend>
+      <div class="container-fluid">
+        <div class="row-fluid">
+          <div id="content" class="span10">
+            <!-- content starts -->
+
+            <div class="row-fluid">
+              <div class="box span12">
+                <div class="box-header well">
+                  <h2><span wicket:id="new_case">[Nuova/Modifica caso]</span></h2>
+                </div>
+                <div class="box-content">
+                  <div wicket:id="feedback" class="feedback"></div>
+                  <form wicket:id="caseForm" enctype="multipart/form-data">
+                    <div id="tabs">
+                      <div id="tabs-1" class="tabsBody">
+                        <div wicket:id="patientPopup"></div>
+                        <div wicket:id="illnessPopup"></div>
+                        <div wicket:id="wardPopup"></div>
+                        <div wicket:id="hoPopup"></div>
+                        <table class="table table-striped table-bordered bootstrap-datatable datatable">
+                          <tr>
+                            <td><wicket:message key="patient"/></td>
+                            <td><input style="width:380px" type="text" wicket:id="patientSelected"/> <a wicket:id="patientFind"><wicket:message key="patientOpen"/></a> <span wicket:id="patientValue"></span></td>
+                          </tr>
+                          <tr>
+                            <td><wicket:message key="illness"/></td>
+                            <td><input style="width:380px" type="text" wicket:id="illnessSelected"/> <a wicket:id="illnessFind"><wicket:message key="illnessOpen"/></a> <span wicket:id="illnessValue"></span></td>
+                          </tr>
+                          <tr>
+                            <td><wicket:message key="exactlyIllness"/></td>
+                            <td><input size="40" type="text" wicket:id="exactlyIllness"/></td>
+                          </tr>
+                          <tr>
+                            <td><wicket:message key="startingDateIllness"/></td>
+                            <td><input class="date-pick" size="10" type="text" wicket:id="startingDateIllness"/></td>
+                          </tr>
+                          <tr>
+                            <td><wicket:message key="typeStartingDate"/></td>
+                            <td>
+                              <span wicket:id="typeStartDate">
+                                <input type="radio">dateknow</input>
+                                <input type="radio">dateNotknow</input>
+                                <input type="radio">dateNotManifest</input>
+                              </span>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td><wicket:message key="diagnosisDateIllness"/></td>
+                            <td><input class="date-pick" size="10" type="text" wicket:id="diagnosisDateIllness"/></td>
+                          </tr>
+                          <tr>
+                            <td><wicket:message key="orphanMedicine"/></td>
+                            <td><input type="checkbox" wicket:id="orphanMedicine"/></td>
+                          </tr>
+                          <tr>
+                            <td><wicket:message key="medicineDescription"/></td>
+                            <td><input type="text" wicket:id="medicineDescription"/></td>
+                          </tr>
+                          <tr>
+                            <td><wicket:message key="categoryCMedicine"/></td>
+                            <td><input type="checkbox" wicket:id="categoryCMedicine"/></td>
+                          </tr>
+                          <tr>
+                            <td><wicket:message key="categoryCMedicineDescription"/></td>
+                            <td><input type="text" wicket:id="categoryCMedicineDescription"/></td>
+                          </tr>
+                          <tr>
+                            <td><wicket:message key="foreigner"/></td>
+                            <td>
+                              <div wicket:id="foreigner">
+                                <input title="Italia" type="radio">[Italia]</input>
+                                <input title="Estero" type="radio">[Estero]</input>
+                              </div>
+                            </td>
+                          </tr>
+                          <span wicket:id="fragmentContainer"></span>
+                          <wicket:fragment wicket:id="fragment1">
+                            <tr>
+                              <td style="width:200px"><wicket:message key="regionHospital"/></td>
+                              <td><select class="hospital" wicket:id="region"/></td>
+                            </tr>
+                            <tr>
+                              <td><wicket:message key="hospitalOrganization"/></td>
+                              <td><select class="hospital" wicket:id="hospitalOrganization"/>
+                                <a wicket:id="hospitalHoAdd"><wicket:message key="hospitalHoAdd"/></a></td>
+                            </tr>
+                            <tr>
+                              <td><wicket:message key="hospitalWard"/></td>
+                              <td><select style="width:320px" wicket:id="hospitalWard"/>
+                                <a wicket:id="hospitalWardAdd"><wicket:message key="hospitalWardAdd"/></a>
+                              </td>
+                            </tr>                          
+                          </wicket:fragment>                            
+                          <wicket:fragment wicket:id="fragment2">
+                            <tr>
+                              <td style="width:200px"><wicket:message key="nation"/></td>
+                              <td><select class="living" wicket:id="nation"/></td>
+                            </tr>
+                            <tr>
+                              <td><wicket:message key="hospitalForeigner"/></td>
+                              <td><input type="text" wicket:id="hospitalForeigner"/></td>
+                            </tr>
+                          </wicket:fragment>
+                        </table>
+                      </div>
+
+                      <div id="tabs-2">
+                        <div wicket:id="examPopup"></div>
+                        <div wicket:id="container">
+                          <table class="table table-striped table-bordered bootstrap-datatable datatable">
+                            <h2>Gestione Esami</h2>
+                            <tr wicket:id="examList">
+                              <td><span wicket:id="description"/></td>
+                              <td><span wicket:id="typeExam"/></td>
+                              <td>
+                                <a class="btn btn-success" href="#" wicket:id="update">
+                                  <i class="icon-edit icon-white"></i>
+                                  Modifica                                       
+                                </a>
+
+                                <a class="btn btn-danger" href="#" wicket:id="delete">
+                                  <i class="icon-trash icon-white"></i> 
+                                  Cancella
+                                </a>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td colspan="2">
+                                <a wicket:id="addExam">
+                                  <img src="img/add.png" alt="Add exam" style="border:none"/>
+                                </a>
+                              </td>
+                            </tr>
+                          </table>
+                        </div>
+
+                      </div>
+
+                    </div>
+                    <script type="text/javascript">
+                      changeBox();
+                      setAutocompleteOff();
+                    </script>
+                    <div>
+                      <input type="hidden" wicket:id="tabId"/>
+                      <input type="submit" class="btn btn-primary" wicket:id="confirm"/>
+                    </div>
+
+                  </form>
+                </div>
+              </div>
+            </div>
+
+            <!-- content ends -->
+          </div><!--/#content.span10-->
+        </div><!--/fluid-row-->
+        <hr/>
+        <footer>
+          <p class="pull-left">Everett Italia &copy;2010 - Tirasa S.r.l. &copy;2013</p>
+          <p class="pull-right"><img src="img/logorm.gif" alt="logo" title="logo"/></p>
+        </footer>
+      </div>
+    </wicket:extend>
+  </body>
+
+</html>

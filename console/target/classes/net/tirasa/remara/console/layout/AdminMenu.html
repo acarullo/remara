@@ -1,0 +1,56 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:wicket="http://wicket.sourceforge.net/"
+  xml:lang="en"
+  lang="en">
+  <body>
+    <wicket:panel>
+      <div class="span2 main-menu-span">
+        <div class="well nav-collapse sidebar-nav">
+          <ul class="nav nav-tabs nav-stacked main-menu">
+
+            <li class="nav-header hidden-tablet"><wicket:message key="menu_title_users"/></li>
+            <wicket:link>
+              <li><a class="ajax-link" href="NewUser.html"><i class="icon-th"></i><span class="hidden-tablet"><wicket:message key="new_user"/></span></a></li>
+              <li><a class="ajax-link" href="ListUsers.html"><i class="icon-th"></i><span class="hidden-tablet"><wicket:message key="list_users"/></span></a></li>
+            </wicket:link>
+
+            <li class="nav-header hidden-tablet"><wicket:message key="menu_title_illness"/></li>
+            <wicket:link>
+              <li><a class="ajax-link" href="NewIllness.html"><i class="icon-th"></i><span class="hidden-tablet"><wicket:message key="new_illness"/></span></a></li>
+              <li><a class="ajax-link" href="ListIllness.html"><i class="icon-th"></i><span class="hidden-tablet"><wicket:message key="list_illness"/></span></a></li>
+            </wicket:link>
+
+            <li class="nav-header hidden-tablet"><wicket:message key="menu_title_patients"/></li>
+            <wicket:link>
+              <li><a class="ajax-link" href="ListPatients.html"><i class="icon-th"></i><span class="hidden-tablet"><wicket:message key="list_patients"/></span></a></li>
+            </wicket:link>
+
+            <li class="nav-header hidden-tablet"><wicket:message key="menu_title_cases"/></li>
+            <wicket:link>
+              <li><a class="ajax-link" href="WfAdminCase.html"><i class="icon-th"></i><span class="hidden-tablet"><wicket:message key="case_not_assign"/></span></a></li>
+              <li><a class="ajax-link" href="CaseAssigned.html"><i class="icon-th"></i><span class="hidden-tablet"><wicket:message key="case_assigned"/></span></a></li>
+              <li><a class="ajax-link" href="ListCases.html"><i class="icon-th"></i><span class="hidden-tablet"><wicket:message key="list_case"/></span></a></li>
+              <li><a class="ajax-link" href="ExportPage.html"><i class="icon-th"></i><span class="hidden-tablet"><wicket:message key="exports"/></span></a></li>
+            </wicket:link>
+
+            <li class="nav-header hidden-tablet"><wicket:message key="menu_title_hospitals"/></li>
+            <wicket:link>
+              <li><a class="ajax-link" href="NewHospital.html"><i class="icon-th"></i><span class="hidden-tablet"><wicket:message key="new_hospital"/></span></a></li>
+              <li><a class="ajax-link" href="ListHospitals.html"><i class="icon-th"></i><span class="hidden-tablet"><wicket:message key="list_hospitals"/></span></a></li>
+              <li><a class="ajax-link" href="ListHospitalWard.html"><i class="icon-th"></i><span class="hidden-tablet"><wicket:message key="list_hospital_ward"/></span></a></li>
+            </wicket:link>
+            <li class="nav-header hidden-tablet">Informazioni</li>
+            <wicket:link>
+              <li><a class="ajax-link" href="GeneralInfo.html"><i class="icon-th"></i><span class="hidden-tablet">Informazioni generali</span></a></li>
+            </wicket:link>
+          </ul>
+        </div>
+      </div>
+    </wicket:panel>
+  </body>
+</html>

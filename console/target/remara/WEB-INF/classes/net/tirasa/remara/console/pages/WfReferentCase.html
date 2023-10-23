@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:wicket="http://wicket.sourceforge.net/"
+  xml:lang="en"
+  lang="en">
+
+  <body>
+
+    <wicket:extend>
+      <div class="container-fluid">
+        <div class="row-fluid">
+          <div id="content" class="span10">
+            <!-- content starts -->
+
+            <div class="row-fluid">
+              <div class="box span12">
+                <div class="box-header well">
+                  <h2><wicket:message key="list_cases"/></h2>
+                </div>
+                <div class="box-content">
+                  <div wicket:id="feedback" class="feedback"></div>
+                  <div wicket:id="caseViewPopup"></div>
+                  <div wicket:id="reasonRefusalCasePopup"></div>
+
+
+                  <div wicket:id="container">
+                    <table class="table table-striped table-bordered bootstrap-datatable datatable">
+                      <thead>
+                        <tr>
+                          <th><wicket:message key="data"/></th>
+                          <th><wicket:message key="name"/></th>
+                          <th><wicket:message key="illness"/></th>
+                          <th><wicket:message key="compiler"/></th>
+                          <th><wicket:message key="action"/></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr wicket:id="caseList">
+                          <td><span wicket:id="data">[DATE]</span></td>
+                          <td><span wicket:id="name">[NAME]</span></td>
+                          <td><span wicket:id="illness">[IllNESS]</span></td>
+                          <td><span wicket:id="compiler">[COMPILER]</span></td>
+                          <td style="width:100px">
+                            <a class="btn btn-info" href="#" wicket:id="linkView">
+                              <i class="icon-zoom-in icon-white"></i>
+                              Visualizza
+                            </a>
+                            <a class="btn btn-warning" href="#" wicket:id="linkApprove">
+                              <i class="icon-share-alt icon-white"></i>
+                              Approva                                   
+                            </a>
+                            <a class="btn btn-danger" href="#" wicket:id="linkUpdate">
+                              <i class=" icon-exclamation-sign icon-white"></i>
+                              Rimanda
+                            </a>
+                            <a class="btn btn-danger" href="#" wicket:id="linkReject">
+                              <i class="icon-thumbs-down icon-white"></i> 
+                              Diniega
+                            </a>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- content ends -->
+          </div><!--/#content.span10-->
+        </div><!--/fluid-row-->
+        <hr>
+          <footer>
+            <p class="pull-left">Everett Italia &copy;2010 - Tirasa S.r.l. &copy;2013</p>
+            <p class="pull-right"><img src="img/logorm.gif" alt="logo" title="logo"/></p>
+          </footer>
+      </div>
+    </wicket:extend>
+  </body>
+</html>

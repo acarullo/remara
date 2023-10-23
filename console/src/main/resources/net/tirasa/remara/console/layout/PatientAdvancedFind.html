@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:wicket>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <title>AdvancedFind</title>
+    </head>
+    <body>
+        <wicket:panel>
+            <div style="text-align:center">
+                <form wicket:id="search">
+
+                    <table class="table_form"  summary="Table used to wrap the Patient form">
+                        <tr>
+                            <td><wicket:message key="patient.name"/></td>
+                            <td><input type="text" wicket:id="name"/></td>
+                            <td><wicket:message key="surname"/></td>
+                            <td><input type="text" wicket:id="surname"/></td>
+                        </tr>
+                        <tr>
+                            <td><wicket:message key="sex"/></td>
+                            <td>
+                                <span wicket:id="sex">
+                                    <input type="radio">Male</input>
+                                    <input type="radio">Female</input>
+                                    <input type="radio">Tutti</input>
+                                </span>
+                            </td>
+                            <td><wicket:message key="taxCode"/></td>
+                            <td><input type="text" wicket:id="taxCode"/></td>
+                        </tr>
+                        <tr>
+                            <td><wicket:message key="birthDate"/></td>
+                            <td><input class="date-pick" size="10" type="text" wicket:id="birthDate"/></td>
+                            <td><wicket:message key="deathDate"/></td>
+                            <td><input class="date-pick" size="10" type="text" wicket:id="deathDate"/></td>
+                        </tr>
+                        <tr>
+                            <td><wicket:message key="foreigner"/></td>
+                            <td colspan="3">
+                                <div wicket:id="foreigner">
+                                    <input type="radio">[Italia]</input>  <input type="radio">[Estero]</input>
+                                </div>
+                            </td>
+                        </tr>
+
+
+                        <tr>
+                            <th colspan="2"><wicket:message key="place_of_birth"/></th>
+                            <th colspan="2"><wicket:message key="residence"/></th>
+                        </tr>
+                        <tr>
+                            <td><wicket:message key="nation"/></td>
+                            <td><select class="find" wicket:id="birthNation"/></td>
+                            <td> </td>
+                            <td> </td>
+                        </tr>
+                        <tr>
+                            <td><wicket:message key="region"/></td>
+                            <td><select class="find" wicket:id="birthRegion"/></td>
+                            <td><wicket:message key="region"/></td>
+                            <td><select class="find" wicket:id="livingRegion"/></td>
+                        </tr>
+                        <tr>
+                            <td><wicket:message key="province"/></td>
+                            <td><select class="find" wicket:id="birthProvince"/></td>
+                            <td><wicket:message key="province"/></td>
+                            <td><select class="find" wicket:id="livingProvince"/></td>
+                        </tr>
+                        <tr>
+                            <td><wicket:message key="municipality"/></td>
+                            <td><select class="find" wicket:id="birthMunicipality"/></td>
+                            <td><wicket:message key="municipality"/></td>
+                            <td><select class="find" wicket:id="livingMunicipality"/></td>
+                        </tr>
+                        <tr>
+                            <td><wicket:message key="Cap"/></td>
+                            <td><input type="text" wicket:id="birthCap"/></td>
+                            <td><wicket:message key="Cap"/></td>
+                            <td><input type="text" wicket:id="livingCap"/></td>
+                        </tr>
+
+
+                        <tr>
+                            <th colspan="2"><wicket:message key="education"/></th>
+                            <th colspan="2"><wicket:message key="occupation"/></th>
+                        </tr>
+                        <tr>
+                            <td><wicket:message key="personalEducation"/></td>
+                            <td><select class="find" wicket:id="personalEducation"/></td>
+                            <td><wicket:message key="personalOccupation"/></td>
+                            <td><select class="find" wicket:id="personalOccupation"/></td>
+                        </tr>
+                        <tr>
+                            <td><wicket:message key="motherEducation"/></td>
+                            <td><select class="find" wicket:id="motherEducation"/></td>
+                            <td><wicket:message key="motherOccupation"/></td>
+                            <td><select class="find" wicket:id="motherOccupation"/></td>
+                        </tr>
+                        <tr>
+                            <td><wicket:message key="fatherEducation"/></td>
+                            <td><select class="find" wicket:id="fatherEducation"/></td>
+                            <td><wicket:message key="fatherOccupation"/></td>
+                            <td><select class="find" wicket:id="fatherOccupation"/></td>
+                        </tr>
+                    </table>
+                    <table  summary="Table used to wrap the Case form - illness">
+                        <tr>
+                            <td><wicket:message key="exactlyOccupation"/></td>
+                            <td colspan="3" align="left"><input type="text" wicket:id="exactlyOccupation"/></td>
+                        </tr>
+                    </table>
+
+                    <p><input type="submit" wicket:id="find"/></p>
+
+                </form>
+                <a wicket:id="link"><wicket:message key="simplyFind"/></a>
+            </div>
+        </wicket:panel>
+    </body>
+</html>

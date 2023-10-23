@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings  xmlns="http://java.sun.com/xml/ns/persistence/orm"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm 
+                                      http://java.sun.com/xml/ns/persistence/orm_2_0.xsd"
+                  version="2.0">
+
+  <entity class="net.tirasa.remara.persistence.data.Role">
+    <attributes>
+      <id name="id">
+        <column name="id"/>
+      </id>
+    </attributes>
+  </entity>
+  
+  <entity class="net.tirasa.remara.persistence.data.User">
+    <attributes>
+      <id name="username">
+      </id>
+    </attributes>
+  </entity>
+  <entity class="net.tirasa.remara.persistence.data.Region">
+    <attributes>
+      <id name="id">
+        <column name="id"/>
+      </id>
+    </attributes>
+  </entity>
+  <entity class="net.tirasa.remara.persistence.data.Province">
+    <attributes>
+      <id name="id">
+        <column name="id"/>
+      </id>
+    </attributes>
+  </entity>
+  
+  <entity class="net.tirasa.remara.persistence.data.Nation">
+    <attributes>
+      <id name="id">
+        <column name="id"/>
+      </id>
+    </attributes>
+  </entity>
+  
+  <entity class="net.tirasa.remara.persistence.data.Municipality">
+    <attributes>
+      <id name="id">
+        <column name="id"/>
+      </id>
+    </attributes>
+  </entity>
+  
+  <entity class="net.tirasa.remara.persistence.data.Illness">
+    <attributes>
+      <id name="id">
+        <column name="id"/>
+      </id>
+    </attributes>
+  </entity>
+
+  <entity class="net.tirasa.remara.persistence.data.Export">
+    <attributes>
+      <id name="id">
+        <column name="id"/>
+      </id>
+    </attributes>
+  </entity>
+  
+  <entity class="net.tirasa.remara.persistence.data.Education">
+    <attributes>
+      <id name="id">
+        <column name="id"/>
+      </id>
+    </attributes>
+  </entity>
+  
+  <entity class="net.tirasa.remara.persistence.data.Occupation">
+    <attributes>
+      <id name="id">
+        <column name="id"/>
+      </id>
+    </attributes>
+  </entity>
+  
+  <entity class="net.tirasa.remara.persistence.data.Patient">
+    <attributes>
+      <id name="id">
+        <column name="id"/>
+      </id>
+    </attributes>
+  </entity>
+  
+  <entity class="net.tirasa.remara.persistence.data.FileCase">
+    <attributes>
+      <id name="id">
+        <column name="id"/>
+      </id>
+    </attributes>
+  </entity>
+
+  <entity class="net.tirasa.remara.persistence.data.Exam">
+    <attributes>
+      <id name="id">
+        <column name="id"/>
+      </id>
+    </attributes>
+  </entity>
+  
+  <entity class="net.tirasa.remara.persistence.data.HospitalWard">
+    <attributes>
+      <id name="id">
+        <column name="id"/>
+      </id>
+    </attributes>
+  </entity>
+  
+  <entity class="net.tirasa.remara.persistence.data.HospitalOrganization">
+    <attributes>
+      <id name="id">
+        <column name="id"/>
+      </id>
+    </attributes>
+  </entity>
+  
+  <entity class="net.tirasa.remara.persistence.data.MedicineCase">
+    <attributes>
+      <id name="id">
+        <column name="id"/>
+      </id>
+    </attributes>
+  </entity>
+  
+  <entity class="net.tirasa.remara.persistence.data.JPACurrentStep">
+    <attributes>
+      <id name="id">
+        <column name="id"/>
+      </id>
+    </attributes>
+  </entity>
+  <entity class="net.tirasa.remara.persistence.data.JPAHistoryStep">
+    <attributes>
+      <id name="id">
+        <column name="id"/>
+      </id>
+    </attributes>
+  </entity>
+  <entity class="net.tirasa.remara.persistence.data.JPAPropertySetItem">
+    <attributes>
+      <id name="id">
+        <column name="id"/>
+      </id>
+    </attributes>
+  </entity>
+  <entity class="net.tirasa.remara.persistence.data.JPAWorkflowEntry">
+    <attributes>
+      <id name="id">
+        <column name="id"/>
+      </id>
+    </attributes>
+  </entity>
+  
+</entity-mappings>

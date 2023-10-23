@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:wicket="http://wicket.sourceforge.net/"
+    xml:lang="en"
+    lang="en">
+
+    <body>
+
+        <wicket:extend>
+
+            <h3><wicket:message key="update_ward"/></h3>
+
+            <form wicket:id="form">
+                <div wicket:id="feedback" class="feedback"></div>
+                <table  summary="Table used to wrap the Ward form"  cellspacing="10">
+                    <tr>
+                        <td><wicket:message key="region"/></td>
+                        <td><span wicket:id="region"></span></td>
+                    </tr>
+                    <tr>
+                        <td><wicket:message key="hospital"/></td>
+                        <td><span wicket:id="hospital"></span></td>
+                    </tr>
+                    <tr>
+                        <td><wicket:message key="name"/></td>
+                        <td><input type="text" wicket:id="name"/></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><input type="submit" wicket:id="save"/></td>
+                    </tr>
+                </table>
+
+
+            </form>
+
+            <p>&nbsp;</p>
+
+        </wicket:extend>
+
+    </body>
+
+</html>

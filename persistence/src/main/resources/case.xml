@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE workflow PUBLIC "-//OpenSymphony Group//DTD OSWorkflow 2.8//EN" "http://www.opensymphony.com/osworkflow/workflow_2_8.dtd">
+<workflow>
+  <initial-actions>
+    <action id="100" name="Start Workflow">
+      <pre-functions>
+        <function type="class">
+          <arg name="class.name">com.opensymphony.workflow.util.Caller</arg>
+        </function>
+      </pre-functions>
+      <results>
+        <unconditional-result old-status="None" status="Initialized" step="1" owner="${caller}"/>
+      </results>
+    </action>
+  </initial-actions>
+  <steps>
+    <step id="1" name="Save">
+      <actions>
+        <action id="1" name="Save case">
+          <restrict-to>
+            <conditions type="AND">
+              <condition type="class">
+                <arg name="status">Initialized</arg>
+                <arg name="class.name">com.opensymphony.workflow.util.StatusCondition</arg>
+              </condition>
+            </conditions>
+          </restrict-to>
+          <pre-functions>
+              <function type="class">
+                  <arg name="class.name">
+                      com.opensymphony.workflow.util.Caller
+                  </arg>
+              </function>
+          </pre-functions>
+          <results>
+            <unconditional-result old-status="Initialized" status="Underway" step="2" owner="${caller}"/>
+          </results>
+        </action>
+      </actions>
+    </step>
+    <step id="2" name="Confirm">
+      <actions>
+        <action id="2" name="Confirm case">
+          <pre-functions>
+              <function type="class">
+                  <arg name="class.name">
+                      com.opensymphony.workflow.util.Caller
+                  </arg>
+              </function>
+          </pre-functions>
+          <results>
+            <unconditional-result old-status="Underway" status="Queued" step="3" owner="${caller}"/>
+          </results>
+        </action>
+      </actions>
+    </step>
+    <step id="3" name="Assign">
+      <actions>
+        <action id="3" name="Assign case">
+          <results>
+            <unconditional-result old-status="Queued" status="Assigned" step="4" owner="${wfOwner}"/>
+          </results>
+        </action>
+      </actions>
+    </step>
+    <step id="4" name="Approve">
+      <actions>
+        <action id="4" name="Approve case">
+          <results>
+            <unconditional-result old-status="Assigned" status="Approved" step="4" owner="${wfOwner}"/>
+          </results>
+        </action>
+        <action id="5" name="Request Modified case">
+          <results>
+            <unconditional-result old-status="Assigned" status="Underway" step="2" owner="${wfOwner}"/>
+          </results>
+        </action>
+        <action id="7" name="Reject case">
+          <results>
+            <unconditional-result old-status="Assigned" status="Rejected" step="4" owner="${wfOwner}"/>
+          </results>
+        </action>
+      </actions>
+    </step>
+  </steps>
+</workflow>

@@ -1,0 +1,159 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:wicket="http://wicket.apache.org">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Style-Type" content="text/css"/>
+
+    <title>ReMaRa</title>
+    <style type="text/css">
+      @charset "utf-8";
+      /* CSS Document */
+
+      /* ---------- FONTAWESOME ---------- */
+      /* ---------- http://fortawesome.github.com/Font-Awesome/ ---------- */
+      /* ---------- http://weloveiconfonts.com/ ---------- */
+
+      @import url(http://weloveiconfonts.com/api/?family=fontawesome);
+
+      /* ---------- ERIC MEYER'S RESET CSS ---------- */
+      /* ---------- http://meyerweb.com/eric/tools/css/reset/ ---------- */
+
+      @import url(http://meyerweb.com/eric/tools/css/reset/reset.css);
+
+      /* ---------- FONTAWESOME ---------- */
+
+      [class*="fontawesome-"]:before {
+        font-family: 'FontAwesome', sans-serif;
+      }
+
+      /* ---------- GENERAL ---------- */
+
+      body {
+        background-color: #fff;
+        color: #000;
+        font-family: "Varela Round", Arial, Helvetica, sans-serif;
+        font-size: 16px;
+        line-height: 1.5em;
+        text-align: center;
+        padding-top: 70px;
+      }
+
+      input {
+        border: none;
+        font-family: inherit;
+        font-size: inherit;
+        font-weight: inherit;
+        line-height: inherit;
+        -webkit-appearance: none;
+        box-shadow: 1px 1px 2px grey;
+      }
+
+      /* ---------- LOGIN ---------- */
+
+      #login {
+        margin: 50px auto;
+        width: 400px;
+      }
+
+      #login h2 {
+        background-color: #cc0000;
+        -webkit-border-radius: 20px 20px 0 0;
+        -moz-border-radius: 20px 20px 0 0;
+        border-radius: 20px 20px 0 0;
+        color: #fff;
+        font-size: 28px;
+        padding: 20px 26px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+        -moz-box-shadow: 3px 3px 3px grey;
+        -webkit-box-shadow: 3px 3px 3px grey;
+        box-shadow: 0px 0px 15px 1px grey;
+      }
+
+      #login h2 span[class*="fontawesome-"] {
+        margin-right: 14px;
+      }
+
+      #login fieldset {
+        background-color: whitesmoke;
+        -webkit-border-radius: 0 0 20px 20px;
+        -moz-border-radius: 0 0 20px 20px;
+        border-radius: 0 0 20px 20px;
+        padding: 20px 26px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+        -moz-box-shadow: 3px 3px 3px grey;
+        -webkit-box-shadow: 3px 3px 3px grey;
+        box-shadow: 0px 0px 15px 1px grey;
+      }
+
+      #login fieldset p {
+        color: #777;
+        margin-bottom: 14px;
+      }
+
+      #login fieldset p:last-child {
+        margin-bottom: 0;
+      }
+
+      #login fieldset input {
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+      }
+
+      #login fieldset input[type="email"], #login fieldset input[type="password"] {
+        background-color: #eee;
+        color: #777;
+        padding: 0px 10px;
+        width: 328px;
+      }
+
+      #login fieldset input[type="submit"] {
+        background-color: #cc0000;
+        color: #fff;
+        display: block;
+        margin: 0 auto;
+        padding: 4px 0;
+        width: 100px;
+      }
+
+      #login fieldset input[type="submit"]:hover {
+        background-color: #009d5d;
+      }
+
+    </style>
+
+  </head>
+  <body style="text-align:center">
+
+    <div id="login">
+
+      <h2><span class="fontawesome-lock"></span>ReMaRa</h2>
+
+      <form wicket:id="login">
+
+        <fieldset>
+
+          <p><label for="email" style="padding-right: 9px;"><wicket:message key="userId"/></label>
+            <input type="text" wicket:id="userId" id="userId" size="25" style="width: 180px" /></p>
+
+          <p><label for="password"><wicket:message key="password"/></label>
+            <input type="password" wicket:id="password" id="password" size="25"  style="width: 180px" /></p>
+
+          <p><input wicket:id="submit" type="submit" value="Login"/></p>
+
+        </fieldset>
+
+      </form>
+      <div id="loginFeedbackDiv">
+        <span wicket:id="feedback" style="font-size: 11pt; font-weight: bold; color: #FF0000;">[feedback message]</span>
+      </div>
+      <div>&nbsp;</div>
+      <span style="">
+        <img src="img/logorm.gif" alt="logo" title="logo"/>
+      </span>
+
+    </div>
+  </body>	
+</html>

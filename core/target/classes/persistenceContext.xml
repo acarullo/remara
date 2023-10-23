@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/context
+                           http://www.springframework.org/schema/context/spring-context.xsd
+                           http://www.springframework.org/schema/tx
+                           http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+  <context:annotation-config/>
+
+  <import resource="classpath*:scanContext.xml"/>
+  <import resource="classpath*:workflowContext.xml"/>
+  
+  <bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+    <property name="jndiName" value="java:comp/env/jdbc/remaraDataSource"/>
+  </bean>
+
+  <bean id="entityManager" class="org.springframework.orm.jpa.support.SharedEntityManagerBean">
+    <property name="entityManagerFactory" ref="entityManagerFactory"/>
+  </bean>
+
+  <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+    <property name="entityManagerFactory" ref="entityManagerFactory"/>
+  </bean>
+  
+  <tx:annotation-driven/> 
+  
+  <bean id="entityManagerFactory"
+        class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+    <property name="persistenceXmlLocation" value="classpath*:META-INF/persistence.xml"/>
+    <property name="persistenceUnitName" value="remaraPersistenceUnit"/>
+    <property name="dataSource" ref="dataSource"/>
+    <property name="jpaVendorAdapter">
+      <bean class="org.springframework.orm.jpa.vendor.OpenJpaVendorAdapter">
+        <property name="showSql" value="false"/>
+        <property name="generateDdl" value="true"/>
+        <property name="databasePlatform" value="org.apache.openjpa.jdbc.sql.PostgresDictionary"/>
+      </bean>
+    </property>
+    <property name="jpaPropertyMap">
+      <map>
+        <!--<entry key="openjpa.Log" value="DefaultLevel=TRACE, Runtime=TRACE, Tool=TRACE, SQL=TRACE"/>-->
+        <entry key="openjpa.NontransactionalWrite" value="false"/>
+        <entry key="openjpa.AutoDetach" value="close, commit, nontx-read, rollback"/>
+
+        <entry key="openjpa.jdbc.SchemaFactory" value="native(ForeignKeys=true)"/>
+        <entry key="openjpa.jdbc.MappingDefaults" value="ForeignKeyDeleteAction=restrict, JoinForeignKeyDeleteAction=restrict"/>
+        <entry key="openjpa.jdbc.UpdateManager" value="constraint"/>
+        
+        <entry key="openjpa.DataCache" value="true"/>
+        <entry key="openjpa.QueryCache" value="true"/>
+        <entry key="openjpa.RemoteCommitProvider" value="sjvm"/>
+      </map>
+    </property>
+  </bean>
+  
+</beans>

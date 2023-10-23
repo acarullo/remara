@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="eng">
+    <head>
+        <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+        <META http-equiv="Content-Style-Type" content="text/css">
+        <title>ReMaRa</title>
+        <link href="css/style.css" rel="stylesheet" type="text/css" />
+        <link type="text/css" href="css/ui-lightness/jquery-ui-1.7.2.custom.css" rel="stylesheet" />
+        <link href="css/datePicker.css" rel="stylesheet" type="text/css" />
+        <script type="text/javascript">
+            _editor_url  = "/remara/js/xinha/"
+            _editor_lang = "it";
+            _editor_skin = "silva";
+        </script>
+        <script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
+        <script type="text/javascript" src="js/jquery-ui-1.8.custom.min.js"></script>
+        <script type="text/javascript" src="js/jquery.datePicker.js"></script>
+        <script type="text/javascript" src="js/date.js"></script>
+        <script type="text/javascript" src="js/utils.js"></script>
+        <script type="text/javascript">
+            $(function(){
+                //Calendar
+                $('.date-pick').datePicker();
+                $('.date-pick').dpSetStartDate('01/01/1900');
+            });
+        </script>
+        <script type="text/javascript" src="js/xinha/XinhaCore.js"></script>
+        <script type="text/javascript" src="js/XinhaConfigCase.js"></script>
+
+        <title>ExamPopup</title>
+    </head>
+    <body>
+            <div style="text-align:center">
+                <form wicket:id="examForm">
+                <div wicket:id="feedback" class="feedback"></div>
+
+                        <table  summary="Table used to wrap the Exam form">
+                            <tr>
+                                <td><wicket:message key="type_exam"/></td>
+                                <td align="left" >
+                                    <span wicket:id="typeExam">
+                                        <input type="radio">hematic</input>
+                                        <input type="radio">instrumental</input>
+                                        <input type="radio">clinical</input>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><wicket:message key="dataExam"/></td>
+                                <td  align="left"><input size="10" type="text" wicket:id="dataExam"/></td>
+                            </tr>
+                            <tr>
+                                <td><wicket:message key="exams"/></td>
+                                <td><textarea id="exams" rows="10" cols="50" wicket:id="description"></textarea></td>
+                            </tr>
+                            <tr>
+                                <td><wicket:message key="report"/></td>
+                                <td><textarea id="report" rows="10" cols="50" wicket:id="report"></textarea></td>
+                            </tr>
+                            <tr>
+                                <td><wicket:message key="criterion"/></td>
+                                <td><textarea id="criterion" rows="10" cols="50" wicket:id="criterion"></textarea></td>
+                            </tr>
+                        </table>
+
+                                <fieldset>
+                                  <legend>Upload form</legend>
+                                    <p>
+                                    <div wicket:id="fileInput" class="mfuex"/>
+                                    </p>
+                                </fieldset>
+
+                            <div>
+                                <table  summary="Table used to upload the file">
+                                <tr wicket:id="fileList">
+                                    <td width="200"><span wicket:id="file">(file)</span></td>
+                                    <td><a href="#" wicket:id="delete"><img src="img/remove.png" border="0"/></a></td>
+                                </tr>
+                                </table>
+
+                            </div>
+
+                    <input type="submit" wicket:id="save"/>
+                </form>
+            </div>
+    </body>
+</html>

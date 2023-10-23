@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="eng">
+    <head>
+        <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+        <META http-equiv="Content-Style-Type" content="text/css">
+        <title>ReMaRa</title>
+        <link href="css/style.css" rel="stylesheet" type="text/css" />
+        <title>HoPopup</title>
+    </head>
+    <body>
+
+            <div style="text-align:center">
+                <form wicket:id="search">
+                    <wicket:message key="name"/> <input type="text" wicket:id="region"/>
+                    <input type="submit" wicket:id="find"/>
+                </form>
+            </div>
+
+            <table summary="Ho List" cellspacing="5">
+                <thead>
+                    <tr>
+                        <td colspan="3" wicket:id="headerPaginator"></td>
+                    </tr>
+                </thead>
+                <thead>
+                    <tr>
+                        <th><wicket:message key="name"/></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr wicket:id="hoList">
+                        <td><span wicket:id="name">[DESCRIPTION]</span></td>
+                        <td><a wicket:id="linkSelect"><wicket:message key="selected"/></a></td>
+                    </tr>
+                </tbody>
+            </table>
+
+    </body>
+</html>

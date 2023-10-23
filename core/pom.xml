@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>net.tirasa.remara</groupId>
+    <artifactId>remara</artifactId>
+    <version>1.0</version>
+  </parent>
+
+  <name>ReMaRa core</name>
+  <description>ReMaRa core</description>
+  <groupId>net.tirasa.remara</groupId>
+  <artifactId>core</artifactId>
+  <packaging>jar</packaging>
+
+  <properties>
+    <logfile>/tmp/remaraCore.log</logfile>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>net.tirasa.remara</groupId>
+      <artifactId>persistence</artifactId>
+    </dependency>
+    
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-core</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-webmvc</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-jdbc</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-context-support</artifactId>
+    </dependency>
+    
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-test</artifactId>
+      <scope>test</scope>
+    </dependency>
+    
+    <dependency>
+      <groupId>org.quartz-scheduler</groupId>
+      <artifactId>quartz</artifactId>
+    </dependency>
+      
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.hsqldb</groupId>
+      <artifactId>hsqldb</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-core</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-classic</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>commons-logging</groupId>
+      <artifactId>commons-logging</artifactId>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>jcl-over-slf4j</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>opensymphony</groupId>
+      <artifactId>osworkflow</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>opensymphony</groupId>
+      <artifactId>propertyset</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>opensymphony</groupId>
+      <artifactId>oscore</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.wicket</groupId>
+      <artifactId>wicket</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.wicket</groupId>
+      <artifactId>wicket-extensions</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.jasypt</groupId>
+      <artifactId>jasypt</artifactId>
+      <scope>compile</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>commons-beanutils</groupId>
+      <artifactId>commons-beanutils</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>commons-lang</groupId>
+      <artifactId>commons-lang</artifactId>
+      <scope>compile</scope>
+    </dependency>
+
+<!--    <dependency>-->
+<!--      <groupId>com.lowagie</groupId>-->
+<!--      <artifactId>itext</artifactId>-->
+<!--      <type>jar</type>-->
+<!--    </dependency>-->
+
+    <dependency>
+      <groupId>com.lowagie</groupId>
+      <artifactId>itext</artifactId>
+      <version>2.1.7</version>
+    </dependency>
+
+  </dependencies>
+
+  <build>
+    <resources>
+      <resource>
+        <directory>src/main/resources</directory>
+        <filtering>true</filtering>
+      </resource>
+      <resource>
+        <directory>../persistence/src/main/resources</directory>
+        <filtering>true</filtering>
+        <includes>
+          <include>persistenceContext.xml</include>
+          <include>scanContext.xml</include>
+        </includes>
+      </resource>
+    </resources>
+    <testResources>
+      <testResource>
+        <directory>src/test/resources</directory>
+        <filtering>true</filtering>
+      </testResource>
+      <testResource>
+        <directory>../persistence/src/test/resources</directory>
+        <filtering>true</filtering>
+        <includes>
+          <include>persistenceWithoutSqlContext.xml</include>
+          <include>**/*.properties</include>
+          <include>**/*.sql</include>
+        </includes>
+      </testResource>
+    </testResources>
+  </build>
+  
+</project>

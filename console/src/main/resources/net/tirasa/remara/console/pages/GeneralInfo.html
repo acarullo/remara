@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:wicket="http://wicket.sourceforge.net/"
+  xml:lang="en"
+  lang="en">
+  <body>
+    <wicket:extend>
+      <div class="container-fluid">
+        <div class="row-fluid">
+          <div id="content" class="span10">
+            <!-- content starts -->
+
+            <div class="row-fluid">
+              <div class="box span12">
+                <div class="box-header well">
+                  <h2>Informazioni Generali</h2>
+                </div>
+                <div class="box-content">
+                  <table class="table table-striped table-bordered bootstrap-datatable datatable">
+                    <thead>
+                      <tr>
+                        <th>Tipo</th>
+                        <th>Totale</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Pazienti Totali</td>
+                        <td><span wicket:id="totalPatients"/></td>
+                      </tr>
+                      <tr>
+                        <td>Pazienti di sesso Maschile</td>
+                        <td><span wicket:id="totalMalePatients"/></td>
+                      </tr>
+                      <tr>
+                        <td>Pazienti di sesso Femminile</td>
+                        <td><span wicket:id="totalFemalePatients"/></td>
+                      </tr>
+                      <tr>
+                        <td>Pazienti Maggiorenni</td>
+                        <td><span wicket:id="totalAdultPatients"/></td>
+                      </tr>
+                      <tr>
+                        <td>Pazienti Minorenni</td>
+                        <td><span wicket:id="totalMinorPatients"/></td>
+                      </tr>
+                      <tr>
+                        <td>Casi</td>
+                        <td><span wicket:id="totalCases"/></td>
+                      </tr>
+                      <tr>
+                        <td>Casi approvati</td>
+                        <td><span wicket:id="totalApprovedCases"/></td>
+                      </tr>
+                      <tr>
+                        <td>Casi in attesa di conferma</td>
+                        <td><span wicket:id="totalUnderwayCases"/></td>
+                      </tr>
+                      <tr>
+                        <td>Casi rigettati</td>
+                        <td><span wicket:id="totalRejectedCases"/></td>
+                      </tr>
+                      <tr>
+                        <td>Casi in coda</td>
+                        <td><span wicket:id="totalQueuedCases"/></td>
+                      </tr>
+                      <tr>
+                        <td>Casi assegnati</td>
+                        <td><span wicket:id="totalAssignedCases"/></td>
+                      </tr>
+                      <tr>
+                        <td>Casi ex Pubertà Precoce</td>
+                        <td><span wicket:id="totalExPPCases"/></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <!-- content ends -->
+          </div><!--/#content.span10-->
+        </div><!--/fluid-row-->
+        <hr>
+          <footer>
+            <p class="pull-left">Everett Italia &copy;2010 - Tirasa S.r.l. &copy;2013</p>
+            <p class="pull-right"><img src="img/logorm.gif" alt="logo" title="logo"/></p>
+          </footer>
+      </div>
+    </wicket:extend>
+  </body>
+</html>

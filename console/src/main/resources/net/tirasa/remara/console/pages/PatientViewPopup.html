@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="eng">
+    <head>
+        <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+        <META http-equiv="Content-Style-Type" content="text/css">
+            <title>ReMaRa</title>
+            <link href="css/style.css" rel="stylesheet" type="text/css" />
+            <title>PatientViewPopup</title>
+    </head>
+    <body>
+
+        <h3><wicket:message key="view_patient"/>
+            <a wicket:id="linkPrint">
+                <img src="img/print.png" alt="Print Case" style="border:none"/>
+            </a></h3>
+
+        <table  width="100%" summary="Table used to view the patient">
+            <tr>
+                <td><wicket:message key="name"/>:</td>
+                <td><span wicket:id="name"></span></td>
+            </tr>
+            <tr>
+                <td><wicket:message key="sex"/>:</td>
+                <td><span wicket:id="sex"></span></td>
+            </tr>
+            <tr>
+                <td><wicket:message key="taxCode"/>:</td>
+                <td><span wicket:id="taxCode"></span></td>
+            </tr>
+            <tr>
+                <td><wicket:message key="telephone"/>:</td>
+                <td><span wicket:id="telephone"></span></td>
+            </tr>
+            <tr>
+                <td><wicket:message key="birthDate"/>:</td>
+                <td><span wicket:id="birthDate"></span></td>
+            </tr>
+            <tr>
+                <td><wicket:message key="deathDate"/>:</td>
+                <td><span wicket:id="deathDate"></span></td>
+            </tr>
+            <tr>
+                <td><wicket:message key="place_of_birth"/>:</td>
+                <td><span wicket:id="place_of_birth"></span></td>
+            </tr>
+            <tr>
+                <td><wicket:message key="residence"/>:</td>
+                <td><span wicket:id="residence"></span></td>
+            </tr>
+            <tr>
+                <td><wicket:message key="education"/>:</td>
+                <td>
+                    <table width="100%" cellpadding="2" cellspacing="2" border="1">
+                        <tr>
+                            <td><wicket:message key="personal"/></td>
+                            <td><wicket:message key="mother"/></td>
+                            <td><wicket:message key="father"/>:</td>
+                        </tr>
+                        <tr>
+                            <td><span wicket:id="personalEducation"/></td>
+                            <td><span wicket:id="motherEducation"/></td>
+                            <td><span wicket:id="fatherEducation"/></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td><wicket:message key="occupation"/>:</td>
+                <td>
+                    <table width="100%" cellpadding="2" cellspacing="2" border="1">
+                        <tr>
+                            <td><wicket:message key="personal"/></td>
+                            <td><wicket:message key="mother"/></td>
+                            <td><wicket:message key="father"/>:</td>
+                        </tr>
+                        <tr>
+                            <td><span wicket:id="personalOccupation"/></td>
+                            <td><span wicket:id="motherOccupation"/></td>
+                            <td><span wicket:id="fatherOccupation"/></td>
+                        </tr>
+                    </table>
+
+                </td>
+            </tr>
+            <tr>
+                <td><wicket:message key="exactlyOccupation"/>:</td>
+                <td><span wicket:id="exactlyOccupation"/></td>
+            </tr>
+        </table>
+
+    </body>
+</html>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+  <appender name="main" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>/tmp/remara-core.log</file>
+    <append>true</append>
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <fileNamePattern>/tmp/remara-core.log.%d{yyyy-MM-dd}</fileNamePattern>
+      <maxHistory>30</maxHistory>
+    </rollingPolicy>
+    <triggeringPolicy
+      class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+      <MaxFileSize>2MB</MaxFileSize>
+    </triggeringPolicy>
+    <encoder>
+      <pattern>%d{HH:mm:ss.SSS} %-5level %logger - %msg%n</pattern>
+    </encoder>
+  </appender>
+  
+  <logger name="net.tirasa.remara.core" additivity="false">
+    <level value="DEBUG"/>
+    <appender-ref ref="main"/>
+  </logger>
+
+  <logger name="org.springframework" additivity="false">
+    <level value="INFO"/>
+    <appender-ref ref="main"/>
+  </logger>
+
+  <logger name="org.apache.http" additivity="false">
+    <level value="OFF"/>
+    <appender-ref ref="main"/>
+  </logger>
+  
+  <logger name="org.quartz">
+    <level value="INFO" />
+    <appender-ref ref="main"/>
+  </logger>
+  
+  <logger name="com.opensymphony">
+    <level value="INFO" />
+    <appender-ref ref="main"/>
+  </logger>
+    
+  <root>
+    <level value="DEBUG"/>
+    <appender-ref ref="main"/>
+  </root>
+</configuration>
+

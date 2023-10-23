@@ -1,0 +1,362 @@
+ 
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>net.tirasa.remara</groupId>
+    <artifactId>remara</artifactId>
+    <version>1.0</version>
+  </parent>
+
+  <name>ReMara console</name>
+  <description>ReMaRa console</description>
+  <groupId>net.tirasa.remara</groupId>
+  <artifactId>console</artifactId>
+  <packaging>war</packaging>
+
+  <properties>
+    <logfile>/tmp/remaraCore.log</logfile>
+    <!--    
+      <netbeans.hint.deploy.server>Tomcat60</netbeans.hint.deploy.server>
+    -->
+  </properties>
+  
+
+  <dependencies>
+
+    <dependency>
+      <groupId>net.tirasa.remara</groupId>
+      <artifactId>persistence</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>net.tirasa.remara</groupId>
+      <artifactId>core</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-core</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-classic</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>commons-logging</groupId>
+      <artifactId>commons-logging</artifactId>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>jcl-over-slf4j</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>servlet-api</artifactId>
+      <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.wicket</groupId>
+      <artifactId>wicket</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.wicket</groupId>
+      <artifactId>wicket-datetime</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.wicket</groupId>
+      <artifactId>wicket-extensions</artifactId>
+    </dependency>
+    
+    <dependency>
+      <groupId>org.apache.wicket</groupId>
+      <artifactId>wicket-auth-roles</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>commons-dbcp</groupId>
+      <artifactId>commons-dbcp</artifactId>
+    </dependency>
+       
+    <dependency>
+      <groupId>commons-httpclient</groupId>
+      <artifactId>commons-httpclient</artifactId>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>commons-lang</groupId>
+      <artifactId>commons-lang</artifactId>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.wicket</groupId>
+      <artifactId>wicket-spring</artifactId>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <finalName>${project.parent.artifactId}</finalName>
+    <plugins>
+
+      <plugin>
+        <groupId>io.fabric8</groupId>
+        <artifactId>docker-maven-plugin</artifactId>
+        <version>0.43.4</version>
+        <configuration>
+          <images>
+            <image>
+              <alias>postgresql-remaradb</alias>
+              <name>postgres:14</name>
+              <run>
+                <env>
+                  <POSTGRES_DB>newremara</POSTGRES_DB>
+                  <POSTGRES_USER>remara</POSTGRES_USER>
+                  <POSTGRES_PASSWORD>password</POSTGRES_PASSWORD>
+                </env>
+                <!-- uncomment these lines to pre-populate the db -->
+                <volumes>
+                  <bind>
+                    <volume>${basedir}/db-init/remaradb-dump.sql:/docker-entrypoint-initdb.d/db-init.sql</volume>
+                  </bind>
+                </volumes>
+                <tmpfs>
+                  <mount>/var/lib/postgresql/data:rw</mount>
+                </tmpfs>
+                <ports>
+                  <port>5432:5432</port>
+                </ports>
+                <log>
+                  <enabled>false</enabled>
+                </log>
+                <containerNamePattern>%a</containerNamePattern>
+                <wait>
+                  <log>PostgreSQL init process complete; ready for start up.</log>
+                  <time>600000</time>
+                </wait>
+              </run>
+            </image>
+          </images>
+        </configuration>
+        <executions>
+          <execution>
+            <id>build-docker</id>
+            <phase>initialize</phase>
+            <goals>
+              <goal>stop</goal>
+              <goal>remove</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>start-docker</id>
+            <phase>pre-integration-test</phase>
+            <goals>
+              <goal>build</goal>
+              <goal>start</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>remove-containers-post-integration</id>
+            <phase>post-integration-test</phase>
+            <goals>
+              <goal>stop</goal>
+              <goal>remove</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-failsafe-plugin</artifactId>
+        <version>2.16</version>
+        <configuration>
+          <redirectTestOutputToFile>true</redirectTestOutputToFile>
+          <encoding>utf-8</encoding>
+          <runOrder>alphabetical</runOrder>
+        </configuration>
+        <executions>
+          <execution>
+            <goals>
+              <goal>integration-test</goal>
+              <goal>verify</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+        <groupId>org.mortbay.jetty</groupId>
+        <artifactId>maven-jetty-plugin</artifactId>
+        <version>6.1.26</version>
+        <configuration>
+          <jettyEnvXml>${basedir}/src/main/webapp/WEB-INF/jetty-env.xml</jettyEnvXml>
+          <scanIntervalSeconds>10</scanIntervalSeconds>
+          <stopKey>foo</stopKey>
+          <stopPort>9999</stopPort>
+          <contextPath>/remara</contextPath>
+          <connectors>
+            <connector implementation="org.mortbay.jetty.nio.SelectChannelConnector">
+              <port>9090</port>
+              <maxIdleTime>60000</maxIdleTime>
+            </connector>
+          </connectors>
+        </configuration>
+        <executions>
+          <execution>
+            <id>start-jetty</id>
+            <phase>pre-integration-test</phase>
+            <goals>
+              <goal>run-war</goal>
+            </goals>
+            <configuration>
+              <scanIntervalSeconds>0</scanIntervalSeconds>
+              <daemon>true</daemon>
+            </configuration>
+          </execution>
+          <execution>
+            <id>stop-jetty</id>
+            <phase>post-integration-test</phase>
+            <goals>
+              <goal>stop</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>selenium-maven-plugin</artifactId>
+        <version>1.0.1</version>
+        <executions>
+          <execution>
+            <id>start</id>
+            <phase>pre-integration-test</phase>
+            <goals>
+              <goal>start-server</goal>
+            </goals>
+            <configuration>
+              <background>true</background>
+              <logOutput>true</logOutput>
+              <multiWindow>true</multiWindow>
+            </configuration>
+          </execution>
+          <execution>
+            <id>stop</id>
+            <phase>post-integration-test</phase>
+            <goals>
+              <goal>stop-server</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>2.11</version>
+        <configuration>
+          <excludes>
+            <exclude>**/integration/*Test.java
+            </exclude>
+          </excludes>
+          <redirectTestOutputToFile>true</redirectTestOutputToFile>
+        </configuration>
+        <executions>
+          <execution>
+            <id>integration-tests</id>
+            <phase>integration-test</phase>
+            <goals>
+              <goal>test</goal>
+            </goals>
+            <configuration>
+              <skip>false</skip>
+              <excludes>
+                <exclude>none</exclude>
+              </excludes>
+              <includes>
+                <include>**/integration/*Test.java
+                </include>
+              </includes>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+
+    <resources>
+      <resource>
+        <directory>src/main/resources</directory>
+        <filtering>false</filtering>
+      </resource>
+    </resources>
+
+    <testResources>
+      <testResource>
+        <directory>src/test/java</directory>
+        <filtering>false</filtering>
+      </testResource>
+    </testResources>
+  </build>
+
+  <profiles>
+    <profile>
+      <id>debug</id>
+      <dependencies>
+        <dependency>
+          <groupId>org.postgresql</groupId>
+          <artifactId>postgresql</artifactId>
+          <version>42.6.0</version>
+        </dependency>
+      </dependencies>
+      <build>
+        <defaultGoal>clean package io.fabric8:docker-maven-plugin:build io.fabric8:docker-maven-plugin:start cargo:run
+        </defaultGoal>
+        <plugins>
+          <plugin>
+            <groupId>org.codehaus.cargo</groupId>
+            <artifactId>cargo-maven3-plugin</artifactId>
+            <inherited>true</inherited>
+<!--            <configuration>-->
+<!--              <configuration>-->
+<!--                <properties>-->
+<!--                  <cargo.jvmargs>-->
+<!--                    -Dspring.profiles.active=${spring.profiles.active}-->
+<!--                    -Xdebug-->
+<!--                    -Xrunjdwp:transport=dt_socket,address=8000,server=y,suspend=n-->
+<!--                    -noverify -XX:+CMSClassUnloadingEnabled-->
+<!--                    -XX:+UseConcMarkSweepGC -Xmx1024m -Xms512m-->
+<!--                  </cargo.jvmargs>-->
+<!--                </properties>-->
+<!--              </configuration>-->
+<!--            </configuration>-->
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+    <profile>
+      <id>skipTests</id>
+      <build>
+        <defaultGoal>clean install</defaultGoal>
+        <plugins>
+          <plugin>
+            <groupId>io.fabric8</groupId>
+            <artifactId>docker-maven-plugin</artifactId>
+            <inherited>true</inherited>
+<!--            <configuration>-->
+<!--              <skip>${skipTests}</skip>-->
+<!--            </configuration>-->
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
+</project>

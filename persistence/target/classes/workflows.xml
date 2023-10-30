@@ -1,3 +1,0 @@
-<workflows>
-    <workflow name="case" type="resource" location="case.xml"/>
-</workflows>

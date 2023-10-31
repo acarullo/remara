@@ -5,9 +5,11 @@ import net.tirasa.remara.persistence.data.Municipality;
 
 public interface MunicipalityDAO {
 
-    public Municipality saveOrUpdate(Municipality municipality);
+    Municipality saveOrUpdate(Municipality municipality);
 
-    public List<Municipality> findByProperty(String propertyName, Object value, String fieldOrder);
+    List<Municipality> findByProperty(String propertyName, Object value, String fieldOrder);
 
-    public Municipality get(Long id);
+    Municipality get(Long id);
+
+    void deleteByProperty(final Long id);
 }

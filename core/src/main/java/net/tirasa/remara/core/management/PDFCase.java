@@ -1,14 +1,15 @@
 package net.tirasa.remara.core.management;
 
-import com.lowagie.text.Chapter;
-import com.lowagie.text.Document;
-import com.lowagie.text.DocumentException;
-import com.lowagie.text.Element;
-import com.lowagie.text.Font;
-import com.lowagie.text.PageSize;
-import com.lowagie.text.Paragraph;
-import com.lowagie.text.pdf.PdfPTable;
-import com.lowagie.text.pdf.PdfWriter;
+import com.itextpdf.text.BaseColor;
+import com.itextpdf.text.Chapter;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.PageSize;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
 import java.awt.Color;
 import java.io.ByteArrayOutputStream;
 import java.text.DateFormat;
@@ -54,13 +55,13 @@ public class PDFCase {
 
     private final Locale locale = Locale.ITALY;
 
-    private static final Font fontCapitolo = new Font(Font.HELVETICA, 14, Font.BOLD);
+    private static final Font fontCapitolo = new Font(Font.FontFamily.HELVETICA, 14, Font.BOLD);
 
-    private static final Font fontSottoCapitolo = new Font(Font.HELVETICA, 12, Font.BOLD);
+    private static final Font fontSottoCapitolo = new Font(Font.FontFamily.HELVETICA, 12, Font.BOLD);
 
-    private static final Font fontDescrizione = new Font(Font.HELVETICA, 9, Font.NORMAL);
+    private static final Font fontDescrizione = new Font(Font.FontFamily.HELVETICA, 9, Font.NORMAL);
 
-    private static final Font fontKey = new Font(Font.HELVETICA, 11, Font.NORMAL);
+    private static final Font fontKey = new Font(Font.FontFamily.HELVETICA, 11, Font.NORMAL);
 
     private Paragraph getTextR(final String s, final Font font, final float f) {
         Paragraph paragraph = new Paragraph(titles.getString(s), font);
@@ -97,7 +98,7 @@ public class PDFCase {
 
     private PdfPTable getPatient(final Patient patient) {
         PdfPTable tab = new PdfPTable(colsWidth);
-        tab.getDefaultCell().setBorderColor(Color.WHITE);
+        tab.getDefaultCell().setBorderColor(BaseColor.WHITE);
 
         tab.setWidthPercentage(TABLE_WIDTH_PERC);
         tab.setHorizontalAlignment(Element.ALIGN_CENTER);
@@ -261,7 +262,7 @@ public class PDFCase {
     private PdfPTable getOwner(final User user) {
         PdfPTable tab = new PdfPTable(colsWidth);
         if (user != null) {
-            tab.getDefaultCell().setBorderColor(Color.WHITE);
+            tab.getDefaultCell().setBorderColor(BaseColor.WHITE);
 
             tab.setWidthPercentage(TABLE_WIDTH_PERC);
             tab.setHorizontalAlignment(Element.ALIGN_CENTER);
@@ -323,7 +324,7 @@ public class PDFCase {
 
     private PdfPTable getPatientTwo(final Patient patient) {
         PdfPTable tab = new PdfPTable(colsWidth);
-        tab.getDefaultCell().setBorderColor(Color.WHITE);
+        tab.getDefaultCell().setBorderColor(BaseColor.WHITE);
 
         tab.setWidthPercentage(TABLE_WIDTH_PERC);
         tab.setHorizontalAlignment(Element.ALIGN_CENTER);
@@ -517,7 +518,7 @@ public class PDFCase {
     private PdfPTable getIllness(final MedicineCase medicineCase) {
         PdfPTable tab = new PdfPTable(colsWidth);
         DateFormat df = DateFormat.getDateInstance(DateFormat.MEDIUM, locale);
-        tab.getDefaultCell().setBorderColor(Color.WHITE);
+        tab.getDefaultCell().setBorderColor(BaseColor.WHITE);
 
         tab.setWidthPercentage(TABLE_WIDTH_PERC);
         tab.setHorizontalAlignment(Element.ALIGN_CENTER);

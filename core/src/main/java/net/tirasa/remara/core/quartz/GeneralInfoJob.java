@@ -1,18 +1,18 @@
 package net.tirasa.remara.core.quartz;
 
-import com.lowagie.text.BadElementException;
-import com.lowagie.text.Chapter;
-import com.lowagie.text.Document;
-import com.lowagie.text.DocumentException;
-import com.lowagie.text.Element;
-import com.lowagie.text.Font;
-import com.lowagie.text.PageSize;
-import com.lowagie.text.Paragraph;
-import com.lowagie.text.Phrase;
-import com.lowagie.text.Section;
-import com.lowagie.text.pdf.PdfPCell;
-import com.lowagie.text.pdf.PdfPTable;
-import com.lowagie.text.pdf.PdfWriter;
+import com.itextpdf.text.BadElementException;
+import com.itextpdf.text.Chapter;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.PageSize;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.Section;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
@@ -44,13 +44,13 @@ public class GeneralInfoJob extends QuartzJobBean {
 
     private static final ResourceBundle titles = ResourceBundle.getBundle(GeneralInfoJob.class.getName());
 
-    private static final Font fontCapitolo = new Font(Font.HELVETICA, 14, Font.BOLD);
+    private static final Font fontCapitolo = new Font(Font.FontFamily.HELVETICA, 14, Font.BOLD);
 
-    private static final Font fontSottoCapitolo = new Font(Font.HELVETICA, 12, Font.BOLD);
+    private static final Font fontSottoCapitolo = new Font(Font.FontFamily.HELVETICA, 12, Font.BOLD);
 
-    private static final Font fontDescrizione = new Font(Font.HELVETICA, 9, Font.BOLDITALIC);
+    private static final Font fontDescrizione = new Font(Font.FontFamily.HELVETICA, 9, Font.BOLDITALIC);
 
-    private static final Font fontValue = new Font(Font.HELVETICA, 10, Font.BOLD);
+    private static final Font fontValue = new Font(Font.FontFamily.HELVETICA, 10, Font.BOLD);
 
     @Override
     protected void executeInternal(JobExecutionContext context) throws JobExecutionException {

@@ -260,7 +260,7 @@ public class PersistenceClient implements Serializable {
     }
 
     public List<HospitalOrganization> findByPropertyHospitals(final String propertyName, final Object value,
-            final String fieldOrder) {
+                                                              final String fieldOrder) {
         return hospitalOrganizationDAO.findByProperty(propertyName, value, fieldOrder);
     }
 
@@ -269,7 +269,7 @@ public class PersistenceClient implements Serializable {
     }
 
     public List<HospitalWard> findByPropertyHWards(final String propertyName, final Object value,
-            final String fieldOrder) {
+                                                   final String fieldOrder) {
         return hospitalWardDAO.findByProperty(propertyName, value, fieldOrder);
     }
 
@@ -330,7 +330,7 @@ public class PersistenceClient implements Serializable {
     }
 
     public List<Municipality> findByPropertyMunicipality(final String propertyName, final Object value,
-            final String fieldOrder) {
+                                                         final String fieldOrder) {
         return municipalityDAO.findByProperty(propertyName, value, fieldOrder);
     }
 
@@ -530,5 +530,13 @@ public class PersistenceClient implements Serializable {
 
     public List<Patient> findByNameAndSurname(final String name, final String surname) {
         return patientDAO.findByNameAndSurname(name, surname);
+    }
+
+    public void saveOrUpdateMunicipality(final Municipality municipality) {
+        municipalityDAO.saveOrUpdate(municipality);
+    }
+
+    public void deleteByPropertyMunicipality(final Long id) {
+        municipalityDAO.deleteByProperty(id);
     }
 }

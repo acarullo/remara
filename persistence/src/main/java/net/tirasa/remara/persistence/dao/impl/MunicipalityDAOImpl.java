@@ -42,4 +42,12 @@ public class MunicipalityDAOImpl extends DAOImpl implements MunicipalityDAO {
         LOG.debug("saving municipality on ReMaRa database: {}", municipality.getId());
         return entityManager.merge(municipality);
     }
+
+    @Override
+    @Transactional
+    public void deleteByProperty(final Long id) {
+        Municipality municipality1 = get(id);
+        entityManager.remove(municipality1);
+        LOG.debug("removing the {} municipality", id);
+    }
 }

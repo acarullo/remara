@@ -537,6 +537,6 @@ public class PersistenceClient implements Serializable {
     }
 
     public void deleteByPropertyMunicipality(final Long id) {
-        municipalityDAO.deleteByProperty(id);
+        municipalityDAO.deleteById(id);
     }
 }

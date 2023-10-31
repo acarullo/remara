@@ -53,8 +53,6 @@ public class MunicipalityManagement {
 
     private void toUtf(final Municipality municipality) {
         municipality.setDescription(Encoder.toUtf(municipality.getDescription().toUpperCase()));
-        municipality.setId(municipality.getId());
-//        municipality.setProvince((municipality.getProvince()).toString());
         municipality.setCadastre(Encoder.toUtf(municipality.getCadastre().toUpperCase()));
     }
 }

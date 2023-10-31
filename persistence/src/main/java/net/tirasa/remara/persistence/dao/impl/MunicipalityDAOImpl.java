@@ -45,7 +45,7 @@ public class MunicipalityDAOImpl extends DAOImpl implements MunicipalityDAO {
 
     @Override
     @Transactional
-    public void deleteByProperty(final Long id) {
+    public void deleteById(final Long id) {
         Municipality municipality1 = get(id);
         entityManager.remove(municipality1);
         LOG.debug("removing the {} municipality", id);

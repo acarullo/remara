@@ -11,5 +11,5 @@ public interface MunicipalityDAO {
 
     Municipality get(Long id);
 
-    void deleteByProperty(final Long id);
+    void deleteById(final Long id);
 }
